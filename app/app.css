@@ -4,9 +4,25 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-white dark:bg-[#f0eded];
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+}
+
+.my_center {
+  @apply flex items-center justify-center;
+}
+
+.my_handle_form {
+  @apply bg-gray-100 p-12 flex flex-col md:ml-auto w-full mt-10 md:mt-0
+}
+
+.my_input_field {
+  @apply w-full bg-white rounded border border-gray-300 focus:border-[#251546] focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-3 px-6 leading-8 transition-colors duration-200 ease-in-out;
+}
+
+.my_input_button {
+  @apply text-white uppercase bg-[#222] border-0 py-3 px-6 mt-4 focus:outline-none hover:bg-[#251546] text-lg
 }
