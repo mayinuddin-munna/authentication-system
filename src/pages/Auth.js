@@ -1,10 +1,10 @@
-import { toast } from "sonner";
+import "./Auth.css"
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
-import login from "/asset/login-image.svg";
+// import login from "../../public/images/login-image";
 
-const Login = () => {
+const Auth = () => {
   const [active, setActive] = useState("login");
   const { register, handleSubmit, reset } = useForm();
 
@@ -15,7 +15,7 @@ const Login = () => {
 
   const handleSignUp = (data) => {};
 
-  const handleSignedIn = (data) => {};
+  const handleSignIn = (data) => {};
 
   return (
     <div className="flex-row-reverse container flex-wrap px-5 py-24 mx-auto my_center">
@@ -43,7 +43,7 @@ const Login = () => {
             <div className=" bg-gray-200 mt-4">
               {active === "login" && (
                 <form
-                  onSubmit={handleSubmit(handleSignedIn)}
+                  onSubmit={handleSubmit(handleSignIn)}
                   className="my_handle_form"
                 >
                   <div className="relative mb-4">
@@ -135,10 +135,10 @@ const Login = () => {
         </div>
       </div>
       <div className="lg:w-1/2 lg:pr-12 md:py-8 md:border-r md:border-b-0 mb-10 md:mb-0 pb-10 border-b border-gray-200">
-        <img src={login} alt="login" />
+        {/* <img src={login} alt="logi-n" /> */}hhh
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Auth;
