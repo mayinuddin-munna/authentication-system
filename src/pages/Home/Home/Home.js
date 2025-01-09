@@ -21,7 +21,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="h-screen py-24">
+    <div className="max-h-full lg:my-20 my-10">
       <h1 className="text-center mb-10">Total available jobs: {list.length}</h1>
       <div className="text-gray-600 body-font">
         <div className="container px-5 mx-auto flex flex-wrap">
