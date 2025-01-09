@@ -35,15 +35,15 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(signIn.fulfilled, (state, action) => {
-        const { user, access, refresh } = action.payload;
-        state.token = user;
+        const { access, refresh } = action.payload;
+        state.user = action.payload;
         state.token = access;
         state.refreshToken = refresh;
         sessionStorage.setItem("token", access);
         document.cookie = `refreshToken=${refresh}`;
       })
       .addCase(signUp.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state = action.payload;
       })
       .addCase(signIn.rejected, (state, action) => {
         state.error = action.error.message;
