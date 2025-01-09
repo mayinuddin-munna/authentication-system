@@ -9,7 +9,9 @@ import { signIn, signUp } from "../redux/slices/authSlice";
 const Auth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const [active, setActive] = useState("login");
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit, reset } = useForm();
 
   const handleClick = (tab) => {
@@ -24,16 +26,17 @@ const Auth = () => {
       .catch((error) => toast.error(error.message));
   };
 
-  const handleSignIn = (data) => {
-    dispatch(signIn(data))
-      .unwrap()
-      .then(() => {
-        toast.success("Authenticated successfully!");
-        navigate("/");
-      })
-      .catch((error) => {
-        toast.error("Invalid login credentials");
-      });
+  const handleSignIn = async (data) => {
+    setLoading(true);
+    try {
+      await dispatch(signIn(data)).unwrap();
+      toast.success("Authenticated successfully!");
+      navigate("/");
+    } catch (error) {
+      toast.error("Invalid login credentials");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -90,7 +93,7 @@ const Auth = () => {
                     />
                   </div>
                   <button type="submit" className="my_input_button">
-                    Sign In
+                    {loading ? "Signing In..." : "Sign In"}
                   </button>
                   <div className="text-center mt-5">
                     <p className="uppercase">Order Status Tracking</p>

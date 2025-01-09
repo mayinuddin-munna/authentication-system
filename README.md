@@ -50,6 +50,7 @@ npm install or yarn
 npm start or yarn start
 ```
 
+## Folder Structure
 ``` bash
 src/
 ├── api/                # API functions

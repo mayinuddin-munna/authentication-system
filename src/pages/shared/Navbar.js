@@ -12,13 +12,21 @@ import { logout } from "../../redux/slices/authSlice";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const isLoggedIn = useSelector((state) => state.auth.user);
   console.log(isLoggedIn);
 
   const handleLogout = () => {
     dispatch(logout());
-    toast("Logout successfully!")
+    toast("Logout successfully!");
   };
+
+  // const user = useSelector((state) => state.auth.user);
+  // const token = useSelector((state) => state.auth.token);
+  // const refreshToken = useSelector((state) => state.auth.refreshToken);
+
+  // console.log("User:", user);
+  // console.log("Token:", token);
+  // console.log("Refresh Token:", refreshToken);
 
   return (
     <div className="bg-gray-100 px-4 py-5">
@@ -51,7 +59,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={handleLogout}
-                className="bg-red-500 px-4 py-2 rounded hover:bg-red-600"
+                className="bg-red-500 px-2 text-white text-md font-bold rounded hover:bg-red-600"
               >
                 Logout
               </button>

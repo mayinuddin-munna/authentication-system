@@ -19,6 +19,11 @@ const authSlice = createSlice({
     error: null,
   },
   reducers: {
+    setAuth: (state, action) => {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.refreshToken = action.payload.refreshToken;
+    },
     logout: (state) => {
       state.user = null;
       state.token = null;
@@ -30,7 +35,8 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(signIn.fulfilled, (state, action) => {
-        const { access, refresh } = action.payload;
+        const { user, access, refresh } = action.payload;
+        state.token = user;
         state.token = access;
         state.refreshToken = refresh;
         sessionStorage.setItem("token", access);
@@ -45,5 +51,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { setAuth, logout } = authSlice.actions;
 export default authSlice.reducer;
