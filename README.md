@@ -48,6 +48,7 @@ npm install or yarn
 3. Start the development server
 ``` bash
 npm start or yarn start
+```
 
 ``` bash
 src/

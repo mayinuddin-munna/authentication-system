@@ -10,7 +10,7 @@ const Home = () => {
         const response = await axios.get(
           `https://interview.pencilwoodbd.org/api/job/`
         );
-        console.log(response.data);
+        
         setList(response.data);
       } catch (error) {
         console.error("Error fetching job list:", error);
@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <div className="max-h-full lg:my-20 my-10">
-      <h1 className="text-center mb-10">Total available jobs: {list.length}</h1>
+      <h1 className="text-center mb-10">Total available jobs: {list?.length}</h1>
       <div className="text-gray-600 body-font">
         <div className="container px-5 mx-auto flex flex-wrap">
           <div className="flex flex-wrap -m-4">
@@ -37,7 +37,7 @@ const Home = () => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth="2"
-                        class="w-5 h-5"
+                        className="w-5 h-5"
                         viewBox="0 0 24 24"
                       >
                         <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
