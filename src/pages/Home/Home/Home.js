@@ -11,7 +11,7 @@ const Home = () => {
       const response = await axios.get(
         `https://interview.pencilwoodbd.org/api`
       );
-      setList(response.data);
+      setList(response);
     };
     fetchJobList();
   }, []);
